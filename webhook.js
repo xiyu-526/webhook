@@ -1,6 +1,6 @@
 let app = require("http");
 
-app.createServer(function(req,res){
+let server = app.createServer(function(req,res){
     if(req.method === "POST" && req.url === "/webhook"){
         //设置回应格式 （Json）
         res.setHeader('Content-Type','application/json');
@@ -10,6 +10,6 @@ app.createServer(function(req,res){
     }
 })
 
-app.linsten(4000,function(){
+server.listen(4000,function(){
     console.log("已连接上webhook服务")
 })
