@@ -10,17 +10,6 @@ function sign(body){
     return `sha1=`+crypto.createHmac('sha1','111111').update(body).digest('hex');
 }
 
-      let json = {
-        name:'adasd',
-        a:[
-          'a1321',123123
-        ]
-      };
-let buffer=Buffer(json);
-      let data = JSON.parse(buffer);
-
-      console.log(data);
-
 let server = app.createServer(function(req,res){
     console.log(req.method,req.url);
     if(req.method === "POST" && req.url === "/webhook"){
