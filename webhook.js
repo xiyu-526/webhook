@@ -7,7 +7,7 @@ function sign(body){
     //sha1双重加密
     //sha256双重加密
     //md5双重加密
-    return `sha1=`+crypto.createHmac('sha1','111111').update(body).digest('hex');
+    return `sha1=`+crypto.createHmac('sha1','').update(body).digest('hex');
 }
 
 let server = app.createServer(function(req,res){
