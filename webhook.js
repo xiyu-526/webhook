@@ -1,7 +1,7 @@
 let app = require("http");
 let {spawn} = require("child_process");
 let crypto = require('crypto'); //hash 模块
-let sendMail = require('./sendMail');
+//let sendMail = require('./sendMail');
 function sign(body){
     //使用 hash.update() 方法将要计算的数据以流（stream）的方式写入，流输入结束后，使用 hash.digest() 方法计算数据的 hash 值。
     //sha1双重加密
@@ -46,13 +46,13 @@ let server = app.createServer(function(req,res){
                     let logs = Buffer.concat(bufs);
                     console.log(logs);
                     let tologs = logs.toString();
-                    sendMail(`
-                        <h3>部署日期：${new Date()}</h3>
-                        <h3>部署人：${pay.pusher.name}</h3>
-                        <h3>部署邮箱：${pay.pusher.email}</h3>
-                        <h3>提交信息：${pay.head_commit&&pay.head_commit['message']}</h3>
-                        <h3>部署日志：${tologs.replace("\r\n","<br />")}</h3>
-                    `);
+                    //sendMail(`
+                    //    <h3>部署日期：${new Date()}</h3>
+                    //    <h3>部署人：${pay.pusher.name}</h3>
+                    //    <h3>部署邮箱：${pay.pusher.email}</h3>
+                    //    <h3>提交信息：${pay.head_commit&&pay.head_commit['message']}</h3>
+                     //   <h3>部署日志：${tologs.replace("\r\n","<br />")}</h3>
+                    //`);
                 })
             } 
             
