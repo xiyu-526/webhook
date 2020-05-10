@@ -16,7 +16,7 @@ function sign(body){
           'a1321',123123
         ]
       };
-let buffer=new Buffer(json);
+let buffer=Buffer(json);
       let data = JSON.parse(buffer);
 
       console.log(data);
