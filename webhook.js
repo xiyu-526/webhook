@@ -7,6 +7,10 @@ function sign(body){
     //sha1双重加密
     //sha256双重加密
     //md5双重加密
+    console.log('createHmac'+crypto.createHmac('sha1','111111'));
+    console.log('createHmac.update'+crypto.createHmac('sha1','111111').update(body));
+    console.log('createHmac.update.digest'+crypto.createHmac('sha1','111111').update(body).digest('hex'));
+    
     return `sha1=`+crypto.createHmac('sha1','111111').update(body).digest('hex');
 }
 
@@ -14,20 +18,28 @@ let server = app.createServer(function(req,res){
     console.log(req.method,req.url);
     if(req.method === "POST" && req.url === "/webhook"){
         let bufs = [];
+        console.log('req:::');
         console.log(req);
         req.on('data',function(buf){
-            console.log("req-data:"+buf);
+            console.log("req-data:");
+            console.log(buf);
             bufs.push(buf);
         })
         req.on('end',function(buf){
             let body = Buffer.concat(bufs);
+            console.log("Buffer-body:");
+            console.log(body);
+            
             //触发传递的事件类型的名称。
             let eventname = req.headers['x-github-event']; //push事件
             let signature = req.headers['x-hub-signature']; //github请求过来的时候，要传递请求体body,还会传递一个signature(签名)，你需要验证签名对不对
             
-            console.log("signature:"+signature);
-            console.log("BODY:"+body);
-            console.log("sign-BODY:"+sign(body));
+            console.log("signature:");
+            console.log(signature);
+            
+            console.log("sign-BODY:");
+            console.log(sign(body));
+            
             //sign 用于生成签名
             if(signature !== sign(body)){
                return res.end("没找到");
@@ -39,13 +51,19 @@ let server = app.createServer(function(req,res){
                 let pay = JSON.parse(body);
                 let child = spawn('sh',[`${pay.repository.name}.sh`]);
                 let bufs = [];
+                
+                console.log("pay:");
+                console.log(pay);
+                
                 child.stdout.on("data",function(buffer){
                     console.log("childe-data-on:"+buffer);
                     bufs.push(buffer);
                 })
                 child.stdout.on("end",function(buffer){
+                    console.log('bufs:'+bufs);
                     let logs = Buffer.concat(bufs);
-                    console.log(logs);
+                   
+                    console.log('logs:'+logs);
                     let tologs = logs.toString();
                     //sendMail(`
                     //    <h3>部署日期：${new Date()}</h3>
