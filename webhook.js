@@ -7,14 +7,14 @@ function sign(body){
     //sha1双重加密
     //sha256双重加密
     //md5双重加密
-    return `sha1=`+crypto.createHmac('sha1','').update(body).digest('hex');
+    return `sha1=`+crypto.createHmac('sha1','111111').update(body).digest('hex');
 }
 
 let server = app.createServer(function(req,res){
     console.log(req.method,req.url);
     if(req.method === "GET" && req.url === "/webhook"){
         let bufs = [];
-        console.log('req:'+req);
+        console.log(req);
         req.on('data',function(buf){
             console.log("req-data:"+buf);
             bufs.push(buf);
