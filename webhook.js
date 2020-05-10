@@ -12,7 +12,7 @@ function sign(body){
 
 let server = app.createServer(function(req,res){
     console.log(req.method,req.url,req.headers['x-github-event'],req.headers['x-hub-signature']);
-    if(req.method === "POST" && req.url === "/webhook"){
+    if(req.method === "GET" && req.url === "/webhook"){
         let bufs = [];
         req.on('data',function(buf){
             console.log("req-data:"+buf);
