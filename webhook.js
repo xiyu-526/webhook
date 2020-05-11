@@ -34,6 +34,9 @@ let server = app.createServer(function(req,res){
             let body = Buffer.concat(bufs);
             console.log("Buffer-body:");
             console.log(body);
+
+            console.log("Buffer-tostring:");
+            console.log(body.toString());
             
             //触发传递的事件类型的名称。
             let eventname = req.headers['x-github-event']; //push事件
