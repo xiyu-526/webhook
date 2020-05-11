@@ -7,9 +7,14 @@ function sign(body){
     //sha1双重加密
     //sha256双重加密
     //md5双重加密
-    console.log('createHmac'+crypto.createHmac('sha1','111111'));
-    console.log('createHmac.update'+crypto.createHmac('sha1','111111').update(body));
-    console.log('createHmac.update.digest'+crypto.createHmac('sha1','111111').update(body).digest('hex'));
+    console.log('createHmac：');
+    console.log(crypto.createHmac('sha1','111111'));
+
+    console.log('createHmac.update：');
+    console.log(crypto.createHmac('sha1','111111').update(body));
+
+    console.log('createHmac.update.digest:');
+    console.log(crypto.createHmac('sha1','111111').update(body).digest('hex'));
     
     return `sha1=`+crypto.createHmac('sha1','111111').update(body).digest('hex');
 }
@@ -64,14 +69,7 @@ let server = app.createServer(function(req,res){
                     let logs = Buffer.concat(bufs);
                    
                     console.log('logs:'+logs);
-                    let tologs = logs.toString();
-                    //sendMail(`
-                    //    <h3>部署日期：${new Date()}</h3>
-                    //    <h3>部署人：${pay.pusher.name}</h3>
-                    //    <h3>部署邮箱：${pay.pusher.email}</h3>
-                    //    <h3>提交信息：${pay.head_commit&&pay.head_commit['message']}</h3>
-                     //   <h3>部署日志：${tologs.replace("\r\n","<br />")}</h3>
-                    //`);
+                    
                 })
             } 
             
