@@ -1,6 +1,12 @@
 #!/bin/bash
 WORK_PATH='/usr/mypj/vue-node'
+DIST_PATH='/usr/mypj/vue-node/dist'
+DATE=${date +%Y-%M-%D-%H-%M-%S}
 cd $WORK_PATH
+
+#打包文件目录文件 zip -r, zip 打包单个文件 ,unzip [文件名], cp -r 目录/* , rm -rf 目录/*
+zip -r $WORK_PATH/bifen-date.zip $DIST_PATH/*
+
 echo "先清除老代码"
 git reset --hard origin/master
 git clean -f
