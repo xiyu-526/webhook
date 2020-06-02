@@ -24,4 +24,4 @@ echo "删除容器"
 docker rm vue-web-container
 
 echo "启动容器"
-docker container run -p 80:80 --name vue-web-container -d vue-web:v1.0
+docker container run -p 85:80 --name vue-web-container -d vue-web:v1.0
