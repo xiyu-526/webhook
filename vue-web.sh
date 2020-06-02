@@ -1,5 +1,6 @@
 #!/bin/bash
-cd '/usr/mypj/vue-web'
+WORK_PATH='/usr/mypj/vue-web'
+cd $WORK_PATH
 
 git reset --hard origin/master
 git clean -f
