@@ -16,7 +16,7 @@ echo "构建代码"
 npm run build
 
 echo "构建镜像"
-docker build -t vue-web:v1.0
+docker build -t vue-web:v1.0 .
 
 echo "停止容器"
 docker stop vue-web-container
