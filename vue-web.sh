@@ -6,6 +6,7 @@ git clean -f
 
 git pull origin master
 
+npm install
 npm run build
 
 docker build -t vue-web:v1.0
