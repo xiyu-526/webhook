@@ -13,9 +13,9 @@ git clean -f
 echo '拉取最新代码'
 git pull origin master
 echo '开始构建'
-docker build -t vue-node:1.0 .
+docker build -t vue-node:1.1 .
 echo '先停止并删除旧容器'
 docker stop vue-node-container
 docker rm vue-node-container
 echo "启动新容器"
-docker container run -p 3000:3000 --name vue-node-container -d vue-node:1.0
+docker container run -p 3000:3000 --name vue-node-container -d vue-node:1.1
