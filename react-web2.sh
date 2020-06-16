@@ -28,4 +28,3 @@ docker rm react-web2-container
 
 echo "启动容器"
 docker container run -p 86:86 --name react-web2-container -d react-web2:v1.0
-
