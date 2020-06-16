@@ -2,10 +2,10 @@
 WORK_PATH = '/usr/mypj/react-web2'
 cd $WORK_PATH
 
-git reset --hard orgin/master
+git reset --hard origin/master
 git clean -f
 
-git pull orgin master
+git pull origin master
 
 npm install
 npm run build
