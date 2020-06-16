@@ -1,3 +1,4 @@
+#!/bin/bash
 WORK_PATH = '/usr/mypj/react-web2'
 cd $WORK_PATH
 
